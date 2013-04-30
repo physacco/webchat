@@ -1,0 +1,25 @@
+<noscript>
+<div id="noscript-hint">This page requires JavaScript.</div>
+</noscript>
+
+<%- if @error -%>
+<h1 id="service-unavailable">Service Temporarily Unavailable</h1>
+<div id="chatroom-maintenance">
+WebTalk is under maintenance.
+</div>
+<%- else -%>
+<div id="candy"></div>
+
+<%= content_for :custom_js do -%>
+<script type="text/javascript">
+$(document).ready(function() {
+    Candy.init('/http-bind', {
+        view: { resources: '/candy/', language: '<%= @lang %>' },
+        hall: { mucDomain: '<%= @muchost %>' },
+    });
+
+    Candy.Core.attach("<%= @jid %>", "<%= @sid %>", "<%= @rid %>");
+});
+</script>
+<%- end # custom_js -%>
+<%- end # else if @error -%>

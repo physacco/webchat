@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>WebChat</title>
+  <meta name="viewport" content="width=1024" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+  <%= stylesheet_link_tag(Rails.env == "production" ? "webchat.min.css" : "webchat.css") %>
+  <!--[if lt IE 9]><%= javascript_include_tag 'html5.js' -%><![endif]-->
+</head>
+<body>
+  <div id="header-wrapper">
+    <header id="header">
+      <a id="logo" href="/" class="round-corner">WebTalk</a>
+    </header>
+  </div>
+
+  <div id="content-wrapper">
+    <div id="content-box">
+      <section id="content">
+          <%= yield %>
+      </section>
+    </div>
+  </div>
+
+  <div id="footer-wrapper">
+    <footer id="footer">
+      <div id="copyright">
+        &copy;2012 webchat
+      </div>
+    </footer>
+  </div>
+
+<%- if Rails.env == "production" -%>
+<%= javascript_include_tag "webchat.min.js" %>
+<%- else -%>
+<%= javascript_include_tag "jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "libchat.js" %>
+<%= javascript_include_tag "chatapp.js" %>
+<%- end -%>
+
+<%= yield :custom_js %>
+</body>
+</html>
