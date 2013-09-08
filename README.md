@@ -15,7 +15,7 @@ Web-based XMPP/Jabber client. Built on [Candy](http://candy-chat.github.io/candy
 ## Steps to create this project
 
 1. `cd /tmp`
-2. `rails new webtalk --skip-bundle --skip-active-record --skip-sprockets --skip-javascript`
+2. `rails new webchat --skip-bundle --skip-active-record --skip-sprockets --skip-javascript`
 3. `cd webchat`
 4. `rm public/index.html`
 5. `rails generate controller chat index`
